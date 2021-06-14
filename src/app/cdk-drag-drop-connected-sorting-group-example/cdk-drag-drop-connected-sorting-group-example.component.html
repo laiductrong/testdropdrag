@@ -1,0 +1,113 @@
+<!-- <div class="board">
+    <div class="column">
+        <h3>New</h3>
+        <div cdkDrop #new="cdkDrop" [cdkDropData]="newItems" [cdkDropConnectedTo]="[active]" (cdkDropDropped)="dropped($event)">
+            <div>
+                <div *ngFor="let item of newItems" cdkDrag>{{ item }}</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="column">
+        <h3>Active</h3>
+        <div cdkDrop #active="cdkDrop" [cdkDropData]="activeItems" [cdkDropConnectedTo]="[new, done]" (cdkDropDropped)="dropped($event)">
+            <div>
+                <div *ngFor="let item of activeItems" cdkDrag>{{ item }}</div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="column">
+        <h3>Done</h3>
+        <div cdkDrop #done="cdkDrop" [cdkDropData]="doneItems" [cdkDropConnectedTo]="[active]">
+            <div>
+                <div *ngFor="let item of doneItems" cdkDrag>{{ item }}</div>
+            </div>
+
+        </div>
+    </div>
+</div> -->
+
+
+<!-- 
+<div class="container">
+    <h1>{{title}}</h1>
+    <p>For more turorials and courses visit <a [href]="website" target="_blank"> samorgill.com</a></p>
+
+    <div class="list-container">
+
+        <div class="todo-container column-container">
+            <div class="list">
+                <h2>Tech to learn</h2>
+                <mat-card *ngFor="let todo of todos">
+                    <mat-card-header>
+                        <mat-card-title>{{todo.name}}</mat-card-title>
+                        <mat-card-subtitle>{{todo.category}}</mat-card-subtitle>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+        </div>
+
+        <div class="done-container column-container">
+            <div class="list">
+                <h2>Tech learned</h2>
+                <mat-card *ngFor="let complete of completed">
+                    <mat-card-header>
+                        <mat-card-title>{{complete.name}}</mat-card-title>
+                        <mat-card-subtitle>{{complete.category}}</mat-card-subtitle>
+                    </mat-card-header>
+                </mat-card>
+            </div>
+        </div>
+
+    </div>
+</div> -->
+
+
+<button (click)="openVerticallyCentered(content)">thêm công việc</button>
+<div style="display: flex;">
+    <div cdkDropList [cdkDropListData]="numbers" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[otherList,otherList2]" #firstList="cdkDropList" cdkDropList style="width: 25%;">
+        <div cdkDrag *ngFor="let item of numbers" class="item" (click)="openScrollableContent(longContent, item)">{{item}}</div>
+    </div>
+
+    <div cdkDropList [cdkDropListData]="otherNumbers" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[firstList,otherList2]" #otherList="cdkDropList" style="width: 25%;">
+        <div cdkDrag *ngFor="let item of otherNumbers" class="item" (click)="openScrollableContent(longContent, item)">{{item}}</div>
+    </div>
+    <div cdkDropList [cdkDropListData]="otherNumbers2" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[firstList,otherList]" #otherList2="cdkDropList" style="width: 25%;">
+        <div cdkDrag *ngFor="let item of otherNumbers2" class="item" (click)="openScrollableContent(longContent, item)">{{item}}</div>
+    </div>
+</div>
+
+<!--detail-->
+<ng-template #longContent let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <h2>Đây là item: {{itemShow}}</h2>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+    </div>
+</ng-template>
+<!--add new-->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title">Modal title</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+        <input #numberAdd type="number">
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+        <button type="button" class="btn btn-light" (click)="addItem(numberAdd.value); modal.close('Close click')">Add Item</button>
+    </div>
+</ng-template>
