@@ -68,14 +68,14 @@
 
 <button (click)="openVerticallyCentered(content)">thêm công việc</button>
 <div style="display: flex;">
-    <div cdkDropList [cdkDropListData]="numbers" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[otherList,otherList2]" #firstList="cdkDropList" cdkDropList style="width: 25%;">
+    <div cdkDropList [cdkDropListData]="numbers" (cdkDropListDropped)="drop($event);drop1($event)" [cdkDropListConnectedTo]="[otherList,otherList2]" #firstList="cdkDropList" cdkDropList style="width: 25%;">
         <div cdkDrag *ngFor="let item of numbers" class="item" (click)="openScrollableContent(longContent, item)">{{item}}</div>
     </div>
 
-    <div cdkDropList [cdkDropListData]="otherNumbers" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[firstList,otherList2]" #otherList="cdkDropList" style="width: 25%;">
+    <div cdkDropList [cdkDropListData]="otherNumbers" (cdkDropListDropped)="drop($event);drop2($event)" [cdkDropListConnectedTo]="[firstList,otherList2]" #otherList="cdkDropList" style="width: 25%;">
         <div cdkDrag *ngFor="let item of otherNumbers" class="item" (click)="openScrollableContent(longContent, item)">{{item}}</div>
     </div>
-    <div cdkDropList [cdkDropListData]="otherNumbers2" (cdkDropListDropped)="drop($event)" [cdkDropListConnectedTo]="[firstList,otherList]" #otherList2="cdkDropList" style="width: 25%;">
+    <div cdkDropList [cdkDropListData]="otherNumbers2" (cdkDropListDropped)="drop($event);drop3($event)" [cdkDropListConnectedTo]="[firstList,otherList]" #otherList2="cdkDropList" style="width: 25%;">
         <div cdkDrag *ngFor="let item of otherNumbers2" class="item" (click)="openScrollableContent(longContent, item)">{{item}}</div>
     </div>
 </div>

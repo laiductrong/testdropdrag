@@ -30,6 +30,30 @@ export class CdkDragDropConnectedSortingGroupExampleComponent implements OnInit 
     }
     console.log('move');
   }
+  drop1(event: CdkDragDrop<number[]>){
+    // if(event.previousContainer!==event.container){
+    //   transferArrayItem(event.previousContainer.data,event.container.data,event.previousIndex,event.currentIndex);
+    //}else{
+    moveItemInArray(this.numbers,event.previousIndex, event.currentIndex);
+    // }
+    // console.log('move');
+  }
+  drop2(event: CdkDragDrop<number[]>){
+    // if(event.previousContainer!==event.container){
+    //   transferArrayItem(event.previousContainer.data,event.container.data,event.previousIndex,event.currentIndex);
+    //}else{
+     moveItemInArray(this.otherNumbers,event.previousIndex, event.currentIndex);
+    //}
+    //console.log('move');
+  }
+  drop3(event: CdkDragDrop<number[]>){
+    // if(event.previousContainer!==event.container){
+    //   transferArrayItem(event.previousContainer.data,event.container.data,event.previousIndex,event.currentIndex);
+    //}else{
+    moveItemInArray(this.otherNumbers2,event.previousIndex, event.currentIndex);
+    // }
+    // console.log('move');
+  }
 
   itemAdd:any;
   addItem(numberAdd:any): void{
